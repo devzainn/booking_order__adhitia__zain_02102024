@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_work_order_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 style="text-align: center;">
+                            <span t-field="doc.name"/>
+                        </h2>
+                        <table style="width: 100%; border: 1px solid black; border-collapse: collapse; margin-top: 20px;">
+                            <tr>
+                                <td style="border: 1px solid black; padding: 8px; font-weight: bold;">Team Name</td>
+                                <td style="border: 1px solid black; padding: 8px;" t-field="doc.team_id.name"/>
+                                <td style="border: 1px solid black; padding: 8px; font-weight: bold;">Customer</td>
+                                <td style="border: 1px solid black; padding: 8px;" t-field="doc.customer_id.name"/>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid black; padding: 8px; font-weight: bold;">Booking Order Ref</td>
+                                <td style="border: 1px solid black; padding: 8px;" t-field="doc.booking_order_ref"/>
+                                <td style="border: 1px solid black; padding: 8px; font-weight: bold;">Date</td>
+                                <td style="border: 1px solid black; padding: 8px;">
+                                    <span t-field="doc.date_start"/> - <span t-field="doc.date_end"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <h3 style="margin-top: 20px;">NOTES:</h3>
+                        <div style="border: 1px solid black; padding: 10px;">
+                            <p t-field="doc.notes"/>
+                        </div>
+                        <div style="margin-top: 30px;">
+                            <h3>Signature:</h3>
+                            <div style="border: 1px solid black; width: 100%; height: 50px;"></div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

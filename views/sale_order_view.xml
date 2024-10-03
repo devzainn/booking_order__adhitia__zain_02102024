@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_sale_order_form_inherit_booking" model="ir.ui.view">
+        <field name="name">sale.order.form.booking</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[1]" position="after">
+                <group>
+                    <field name="is_booking_order" attrs="{'invisible': [('is_booking_order', '=', False)], 'readonly': [('is_booking_order', '=', True)]}"/>
+                    <field name="booking_start" attrs="{'invisible': [('is_booking_order', '=', False)], 'required': [('is_booking_order', '=', True)]}"/>
+                    <field name="booking_end" attrs="{'invisible': [('is_booking_order', '=', False)], 'required': [('is_booking_order', '=', True)]}"/>
+                    <field name="team_id" on_change="1" attrs="{'invisible': [('is_booking_order', '=', False)], 'required': [('is_booking_order', '=', True)]}"/>
+                    <field name="team_leader" attrs="{'invisible': [('is_booking_order', '=', False)], 'required': [('is_booking_order', '=', True)]}"/>
+                    <field name="team_members" widget="many2many_tags" attrs="{'invisible': [('is_booking_order', '=', False)], 'required': [('is_booking_order', '=', True)]}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_booking_order" model="ir.actions.act_window">
+        <field name="name">Booking Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_booking_order', '=', True)]</field>
+        <field name="context">{'default_is_booking_order': True}</field>
+    </record>
+
+</odoo>

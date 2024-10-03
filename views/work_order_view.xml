@@ -1,0 +1,69 @@
+<odoo>
+    <record id="view_work_order_tree" model="ir.ui.view">
+        <field name="name">work.order.tree</field>
+        <field name="model">work.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="team_id"/>
+                <field name="team_leader"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_work_order_form" model="ir.ui.view">
+        <field name="name">work.order.form</field>
+        <field name="model">work.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_start_work" type="object" string="Start Work" states="pending" class="btn-primary"/>
+                    <button name="action_end_work" type="object" string="End Work" states="in_progress" class="btn-success"/>
+                    <button name="action_reset_work" type="object" string="Reset" states="in_progress"/>
+                    <button name="action_cancel_work" type="object" string="Cancel" class="btn-danger"/>
+                    <!-- <button name="action_report_work_order" string="Print Work Order" type="action" class="btn-primary"/> -->
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="team_id"/>
+                        <field name="team_leader"/>
+                        <field name="team_members" widget="many2many_tags"/>
+                        <field name="planned_start"/>
+                        <field name="planned_end"/>
+                        <field name="date_start" readonly="1"/>
+                        <field name="date_end" readonly="1"/>
+                        <field name="state" readonly="1"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_cancel_work_wizard" model="ir.ui.view">
+        <field name="name">cancel.work.wizard.form</field>
+        <field name="model">cancel.work.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Work">
+                <group>
+                    <field name="reason"/>
+                </group>
+                <footer>
+                    <button string="Confirm" type="object" name="confirm_cancel" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_work_order" model="ir.actions.act_window">
+        <field name="name">Work Orders</field>
+        <field name="res_model">work.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,kanban,calendar,pivot,graph</field>
+    </record>
+</odoo>
