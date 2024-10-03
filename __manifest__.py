@@ -12,7 +12,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','sale'],
+    'depends': ['base','sale','web'],
 
     # always loaded
     'data': [
@@ -22,8 +22,8 @@
         'data/sequence_data.xml',
         'views/sale_order_view.xml',
         'views/menu_views.xml',
-        # 'report/report_work_order.xml',
-        # 'report/report_work_order_action.xml',
+        'report/report_work_order.xml',
+        'report/report_work_order_action.xml',
     ],
     'demo': [
         'demo/demo.xml',
