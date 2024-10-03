@@ -27,6 +27,7 @@
                 <sheet>
                     <group>
                         <field name="name" readonly="1"/>
+                        <field name="booking_order_id"/>
                         <field name="team_id"/>
                         <field name="team_leader"/>
                         <field name="team_members" widget="many2many_tags"/>

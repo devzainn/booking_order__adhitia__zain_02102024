@@ -16,16 +16,15 @@
 
     # always loaded
     'data': [
-        'views/sale_order_view.xml',
         'security/ir.model.access.csv',
         'views/service_team_view.xml',
         'views/work_order_view.xml',
         'data/sequence_data.xml',
+        'views/sale_order_view.xml',
         'views/menu_views.xml',
         # 'report/report_work_order.xml',
         # 'report/report_work_order_action.xml',
     ],
-    # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
